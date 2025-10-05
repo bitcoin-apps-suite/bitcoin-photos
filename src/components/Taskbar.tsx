@@ -20,7 +20,7 @@ export default function Taskbar({ className = '' }: TaskbarProps) {
   };
 
   return (
-    <div className={`fixed top-10 left-0 w-full z-40 bg-black/90 backdrop-blur-md border-b border-white/10 ${className}`}>
+    <div className={`fixed top-10 left-0 w-full z-40 bg-gradient-to-b from-zinc-600 to-zinc-700 border-b border-zinc-800 ${className}`}>
       <div className="h-6 flex items-center justify-between px-3 text-xs text-white/90">
         {/* Left side - App menu */}
         <div className="flex items-center space-x-4">
