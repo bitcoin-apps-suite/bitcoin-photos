@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
-import TopMenuBar from '@/components/TopMenuBar';
+import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import Dock from '@/components/Dock';
 import { Grid, List, Calendar, Upload, Image, Play, Video, Heart, Share2, Eye, TrendingUp, Coins, Camera } from 'lucide-react';
@@ -500,13 +500,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <ProofOfConceptBar />
-      <TopMenuBar />
+      <CleanTaskbar />
       <DevSidebar />
 
       {/* Main content area */}
-      <div className="pt-14 pl-64 pb-20">
+      <div className="pt-16 pl-64 pb-20">
         {/* Toolbar */}
-        <div className="sticky top-14 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-4">
+        <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <h1 className="text-2xl font-bold text-gradient-duo">My Photos</h1>

@@ -96,9 +96,7 @@ export default function Dock({ className = '' }: DockProps) {
     { name: 'Bitcoin Domains', icon: Globe, color: 'rainbow', url: 'https://bitcoin-dns.vercel.app' },
     { name: 'Bitcoin 3D', icon: Box, color: 'text-pink-500', url: 'https://bitcoin-3d.vercel.app' },
     { name: 'Bitcoin Jobs', icon: Briefcase, color: 'rainbow', url: 'https://bitcoin-jobs.vercel.app/' },
-    { name: 'Bitcoin Shares', icon: Share2, color: 'rainbow', url: 'https://bitcoin-shares.vercel.app', disabled: true },
-    { name: '$bPhotos Token', icon: Coins, color: 'text-pink-500', url: '/token' },
-    { name: 'Settings', icon: Settings, color: 'text-gray-500', url: '/settings' }
+    { name: 'Bitcoin Shares', icon: Share2, color: 'rainbow', url: 'https://bitcoin-shares.vercel.app', disabled: true }
   ];
 
   const handleAppClick = (app: DockApp) => {
