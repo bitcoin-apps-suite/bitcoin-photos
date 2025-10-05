@@ -37,21 +37,25 @@ import './DevSidebar.css'
 
 export default function DevSidebar() {
   const pathname = usePathname()
-  const [isCollapsed, setIsCollapsed] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('devSidebarCollapsed')
-      // Default to open for first-time visitors
-      return saved !== null ? saved === 'true' : false
-    }
-    return false
-  })
+  const [isCollapsed, setIsCollapsed] = useState(false) // Always start with false for SSR
   const [issueCount, setIssueCount] = useState<number>(0)
+  const [mounted, setMounted] = useState(false)
+
+  // Handle hydration
+  useEffect(() => {
+    setMounted(true)
+    // Load saved state after mount
+    const saved = localStorage.getItem('devSidebarCollapsed')
+    if (saved !== null) {
+      setIsCollapsed(saved === 'true')
+    }
+  }, [])
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (mounted) {
       localStorage.setItem('devSidebarCollapsed', isCollapsed.toString())
     }
-  }, [isCollapsed])
+  }, [isCollapsed, mounted])
 
   // Fetch GitHub issues count
   useEffect(() => {
