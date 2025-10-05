@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
-import Taskbar from '@/components/Taskbar';
+import TopMenuBar from '@/components/TopMenuBar';
 import DevSidebar from '@/components/DevSidebar';
 import Dock from '@/components/Dock';
 import { TrendingUp, TrendingDown, Search, Filter, Coins, Image, Eye, Heart, ArrowUpDown, BarChart3 } from 'lucide-react';
@@ -128,12 +128,12 @@ export default function ExchangePage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <ProofOfConceptBar />
-      <Taskbar />
+      <TopMenuBar />
       <DevSidebar />
 
-      <div className="pt-16 pl-64 pb-20">
+      <div className="pt-14 pl-64 pb-20">
         {/* Header */}
-        <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
+        <div className="sticky top-14 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div>

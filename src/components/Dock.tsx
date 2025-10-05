@@ -1,15 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Camera, TrendingUp, Coins, Settings, Wifi, Volume2, Battery, User } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Wallet, Mail, Music, FileText, HardDrive, Calendar, Search, Table, Share2, Briefcase, Store, Wifi, Volume2, Battery, Clock, TrendingUp, Building2, Shield, Video, Code2, Camera, MapPin, MessageCircle, Users, Gamepad2, BookOpen, Globe, Box, Coins, Settings } from 'lucide-react';
+import './Dock.css';
 
 interface DockApp {
-  id: string;
+  id?: string;
   name: string;
-  icon: React.ElementType;
+  icon: any;
   color: string;
   url?: string;
+  disabled?: boolean;
   current?: boolean;
+  isImage?: boolean;
 }
 
 interface DockProps {
@@ -17,223 +20,153 @@ interface DockProps {
 }
 
 export default function Dock({ className = '' }: DockProps) {
-  const [hoveredApp, setHoveredApp] = useState<string | null>(null);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [mounted, setMounted] = useState(false);
 
-  // Update time every minute
-  React.useEffect(() => {
+  useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => {
       setCurrentTime(new Date());
-    }, 60000);
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
 
-  const apps: DockApp[] = [
-    {
-      id: 'photos',
-      name: 'Photos',
-      icon: Camera,
-      color: 'text-blue-500',
-      url: '/',
-      current: true
-    },
-    {
-      id: 'exchange',
-      name: 'Exchange',
-      icon: TrendingUp,
-      color: 'text-green-500',
-      url: '/exchange'
-    },
-    {
-      id: 'token',
-      name: '$bPhotos',
-      icon: Coins,
-      color: 'text-primary-500',
-      url: '/token'
-    },
-    {
-      id: 'settings',
-      name: 'Settings',
-      icon: Settings,
-      color: 'text-gray-400',
-      url: '/settings'
-    }
-  ];
-
-  const systemStatus = {
-    wifi: { active: true, strength: 3 },
-    volume: { level: 75, muted: false },
-    battery: { level: 85, charging: false }
+  const getRainbowColor = (index: number): string => {
+    const rainbowColors = [
+      '#ff0000', // Red
+      '#ff8000', // Orange  
+      '#ffff00', // Yellow
+      '#80ff00', // Lime
+      '#00ff00', // Green
+      '#00ff80', // Spring Green
+      '#00ffff', // Cyan
+      '#0080ff', // Blue
+      '#0000ff', // Deep Blue
+      '#8000ff', // Purple
+      '#ff00ff', // Magenta
+      '#ff0080'  // Rose
+    ];
+    return rainbowColors[index % rainbowColors.length];
   };
 
-  const getRainbowColor = (index: number): string => {
-    const colors = [
-      'text-red-500',
-      'text-orange-500', 
-      'text-yellow-500',
-      'text-green-500',
-      'text-blue-500',
-      'text-indigo-500',
-      'text-purple-500'
-    ];
-    return colors[index % colors.length];
+  const getIconColor = (colorClass: string, index: number = 0): string => {
+    if (colorClass === 'rainbow') {
+      return getRainbowColor(index);
+    }
+    
+    const colorMap: { [key: string]: string } = {
+      'text-orange-500': '#f97316',
+      'text-bitcoin-orange': '#f7931a',
+      'text-yellow-500': '#eab308',
+      'text-red-500': '#ef4444',
+      'text-purple-500': '#a855f7',
+      'text-fuchsia-500': '#d946ef',
+      'text-pink-500': '#ec4899',
+      'text-green-500': '#22c55e',
+      'text-blue-500': '#3b82f6',
+      'text-gray-500': '#6b7280',
+      'text-sky-400': '#38bdf8',
+      'text-cyan-500': '#06b6d4',
+      'text-cyan-400': '#22d3ee',
+      'text-emerald-500': '#10b981',
+      'text-blue-600': '#2563eb'
+    };
+    return colorMap[colorClass] || '#ffffff';
+  };
+
+  const dockApps: DockApp[] = [
+    { id: 'bapps-store', name: 'Bitcoin Apps Store', icon: Store, color: 'rainbow', url: 'https://www.bitcoinapps.store/', isImage: true },
+    { name: 'Bitcoin Wallet', icon: Wallet, color: 'rainbow', url: 'https://bitcoin-wallet-sable.vercel.app' },
+    { name: 'Bitcoin Email', icon: Mail, color: 'rainbow', url: 'https://bitcoin-email.vercel.app' },
+    { name: 'Bitcoin Music', icon: Music, color: 'rainbow', url: 'https://bitcoin-music.vercel.app' },
+    { name: 'Bitcoin Writer', icon: FileText, color: 'rainbow', url: 'https://bitcoin-writer.vercel.app' },
+    { name: 'Bitcoin Code', icon: Code2, color: 'rainbow', url: 'https://bitcoin-code.vercel.app' },
+    { name: 'Bitcoin Drive', icon: HardDrive, color: 'rainbow', url: 'https://bitcoin-drive.vercel.app' },
+    { name: 'Bitcoin Calendar', icon: Calendar, color: 'rainbow', url: 'https://bitcoin-calendar.vercel.app' },
+    { name: 'Bitcoin Exchange', icon: TrendingUp, color: 'rainbow', url: '/exchange' },
+    { name: 'Bitcoin Search', icon: Search, color: 'rainbow', url: 'https://bitcoin-search.vercel.app' },
+    { name: 'Bitcoin Spreadsheet', icon: Table, color: 'rainbow', url: 'https://bitcoin-spreadsheet.vercel.app' },
+    { name: 'Bitcoin Video', icon: Video, color: 'rainbow', url: 'https://bitcoin-video-nine.vercel.app' },
+    { name: 'Bitcoin Photos', icon: Camera, color: 'rainbow', url: '/', current: true },
+    { name: 'Bitcoin Maps', icon: MapPin, color: 'rainbow', url: 'https://bitcoin-maps.vercel.app' },
+    { name: 'Bitcoin Chat', icon: MessageCircle, color: 'rainbow', url: 'https://bitcoin-chat.vercel.app' },
+    { name: 'Bitcoin Social', icon: Users, color: 'rainbow', url: 'https://bitcoin-social.vercel.app' },
+    { name: 'Bitcoin Games', icon: Gamepad2, color: 'rainbow', url: 'https://bitcoin-gaming.vercel.app' },
+    { name: 'Bitcoin Books', icon: BookOpen, color: 'rainbow', url: 'https://bitcoin-books-bay.vercel.app' },
+    { name: 'Bitcoin Domains', icon: Globe, color: 'rainbow', url: 'https://bitcoin-dns.vercel.app' },
+    { name: 'Bitcoin 3D', icon: Box, color: 'text-pink-500', url: 'https://bitcoin-3d.vercel.app' },
+    { name: 'Bitcoin Jobs', icon: Briefcase, color: 'rainbow', url: 'https://bitcoin-jobs.vercel.app/' },
+    { name: 'Bitcoin Shares', icon: Share2, color: 'rainbow', url: 'https://bitcoin-shares.vercel.app', disabled: true },
+    { name: '$bPhotos Token', icon: Coins, color: 'text-pink-500', url: '/token' },
+    { name: 'Settings', icon: Settings, color: 'text-gray-500', url: '/settings' }
+  ];
+
+  const handleAppClick = (app: DockApp) => {
+    if (!app.disabled && app.url && !app.current) {
+      window.location.href = app.url;
+    }
   };
 
   return (
-    <div className={`fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 ${className}`}>
-      <div className="flex items-center bg-black/75 backdrop-blur-md rounded-2xl border border-white/10 shadow-2xl px-4 py-3 space-x-4">
-        
-        {/* Apps Section */}
-        <div className="flex items-center space-x-3">
-          {apps.map((app, index) => {
-            const IconComponent = app.icon;
-            const isHovered = hoveredApp === app.id;
-            const colorClass = app.color === 'rainbow' ? getRainbowColor(index) : app.color;
-
-            return (
-              <div key={app.id} className="relative">
-                <button
-                  onMouseEnter={() => setHoveredApp(app.id)}
-                  onMouseLeave={() => setHoveredApp(null)}
-                  className={`flex items-center justify-center w-12 h-12 rounded-xl transition-all duration-300 ease-out hover:bg-white/10 ${
-                    isHovered 
-                      ? 'transform -translate-y-2 scale-110 brightness-125' 
-                      : 'transform translate-y-0 scale-100'
-                  }`}
-                >
-                  <IconComponent 
-                    size={24} 
-                    className={`${colorClass} transition-all duration-300`}
-                  />
-                </button>
-
-                {/* Active indicator */}
-                {app.current && (
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-500 rounded-full pulse-animation" />
-                )}
-
-                {/* Tooltip */}
-                {isHovered && (
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-black/90 text-white text-xs rounded border border-white/20 backdrop-blur-sm opacity-0 animate-tooltip-appear">
-                    {app.name}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+    <div className={`bitcoin-dock ${className}`}>
+      <div className="dock-container">
+        {/* App icons on the left */}
+        <div className="dock-apps">
+          {dockApps.map((app, index) => {
+          const Icon = app.icon;
+          return (
+            <button
+              key={app.name}
+              className={`dock-app ${app.current ? 'active' : ''} ${app.disabled ? 'disabled' : ''}`}
+              onClick={() => handleAppClick(app)}
+              title={app.name}
+              disabled={app.disabled}
+            >
+              {app.id === 'bapps-store' ? (
+                <div className="dock-app-icon">
+                  <img src="/bapps-icon.jpg" alt="BAPPS" className="dock-app-image" />
+                </div>
+              ) : (
+                <Icon className="dock-app-icon" style={{ color: getIconColor(app.color, index) }} />
+              )}
+              {app.current && <span className="dock-indicator" />}
+            </button>
+          );
+        })}
         </div>
-
-        {/* Separator */}
-        <div className="w-px h-8 bg-white/20" />
-
-        {/* System Status Section */}
-        <div className="flex items-center space-x-3">
-          
-          {/* WiFi */}
-          <div className="relative">
-            <button
-              onMouseEnter={() => setHoveredApp('wifi')}
-              onMouseLeave={() => setHoveredApp(null)}
-              className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 hover:bg-white/10"
-            >
-              <Wifi 
-                size={16} 
-                className={`${systemStatus.wifi.active ? 'text-green-400' : 'text-red-400'} transition-colors`}
-              />
-            </button>
-            {hoveredApp === 'wifi' && (
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-black/90 text-white text-xs rounded border border-white/20 backdrop-blur-sm">
-                WiFi: {systemStatus.wifi.active ? 'Connected' : 'Disconnected'}
-              </div>
-            )}
-          </div>
-
-          {/* Volume */}
-          <div className="relative">
-            <button
-              onMouseEnter={() => setHoveredApp('volume')}
-              onMouseLeave={() => setHoveredApp(null)}
-              className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 hover:bg-white/10"
-            >
-              <Volume2 
-                size={16} 
-                className={`${systemStatus.volume.muted ? 'text-red-400' : 'text-white/70'} transition-colors`}
-              />
-            </button>
-            {hoveredApp === 'volume' && (
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-black/90 text-white text-xs rounded border border-white/20 backdrop-blur-sm">
-                Volume: {systemStatus.volume.muted ? 'Muted' : `${systemStatus.volume.level}%`}
-              </div>
-            )}
-          </div>
-
-          {/* Battery */}
-          <div className="relative">
-            <button
-              onMouseEnter={() => setHoveredApp('battery')}
-              onMouseLeave={() => setHoveredApp(null)}
-              className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 hover:bg-white/10"
-            >
-              <Battery 
-                size={16} 
-                className={`${
-                  systemStatus.battery.level > 20 ? 'text-green-400' : 'text-red-400'
-                } transition-colors`}
-              />
-            </button>
-            {hoveredApp === 'battery' && (
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-black/90 text-white text-xs rounded border border-white/20 backdrop-blur-sm">
-                Battery: {systemStatus.battery.level}%{systemStatus.battery.charging ? ' (Charging)' : ''}
-              </div>
-            )}
-          </div>
-
-          {/* Clock */}
-          <div className="relative">
-            <button
-              onMouseEnter={() => setHoveredApp('clock')}
-              onMouseLeave={() => setHoveredApp(null)}
-              className="flex items-center justify-center px-2 py-1 rounded-lg transition-all duration-300 hover:bg-white/10"
-            >
-              <span className="text-white/80 text-xs font-medium font-mono">
-                {currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-              </span>
-            </button>
-            {hoveredApp === 'clock' && (
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-black/90 text-white text-xs rounded border border-white/20 backdrop-blur-sm">
-                {currentTime.toLocaleDateString()}
-              </div>
-            )}
-          </div>
-
-          {/* User */}
-          <div className="relative">
-            <button
-              onMouseEnter={() => setHoveredApp('user')}
-              onMouseLeave={() => setHoveredApp(null)}
-              className="flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-300 hover:bg-white/10"
-            >
-              <User size={16} className="text-primary-500" />
-            </button>
-            {hoveredApp === 'user' && (
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-black/90 text-white text-xs rounded border border-white/20 backdrop-blur-sm">
-                User Profile
-              </div>
-            )}
+        
+        {/* Status icons on the right */}
+        <div className="dock-status">
+          <div className="dock-divider" />
+          <button 
+            className="status-button" 
+            title="Bitcoin Corporation"
+            onClick={() => window.location.href = 'https://bitcoin-corp.vercel.app/'}
+          >
+            <Building2 className="status-icon" style={{ color: '#f7931a' }} />
+          </button>
+          <button 
+            className="status-button" 
+            title="Trust"
+            onClick={() => window.location.href = 'https://bitcoin-corp.vercel.app/trust'}
+          >
+            <Shield className="status-icon" style={{ color: '#3b82f6' }} />
+          </button>
+          <button className="status-button" title="Connected">
+            <Wifi className="status-icon connected" />
+          </button>
+          <button className="status-button" title="Volume">
+            <Volume2 className="status-icon" />
+          </button>
+          <button className="status-button" title="Battery: 100%">
+            <Battery className="status-icon connected" />
+          </button>
+          <div className="status-time" title={mounted ? currentTime.toLocaleDateString() : ''}>
+            <Clock className="status-icon" />
+            <span>{mounted ? currentTime.toLocaleTimeString() : '12:00:00 AM'}</span>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes tooltip-appear {
-          from { opacity: 0; transform: translateX(-50%) translateY(4px); }
-          to { opacity: 1; transform: translateX(-50%) translateY(0); }
-        }
-        
-        .animate-tooltip-appear {
-          animation: tooltip-appear 0.2s ease-out 0.5s forwards;
-        }
-      `}</style>
     </div>
   );
 }

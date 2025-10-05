@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
-import Taskbar from '@/components/Taskbar';
+import TopMenuBar from '@/components/TopMenuBar';
 import DevSidebar from '@/components/DevSidebar';
 import Dock from '@/components/Dock';
 import { Coins, TrendingUp, Users, Zap, Camera, Gift, Lock, BarChart3, ArrowUpDown, DollarSign } from 'lucide-react';
@@ -96,12 +96,12 @@ export default function TokenPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       <ProofOfConceptBar />
-      <Taskbar />
+      <TopMenuBar />
       <DevSidebar />
 
-      <div className="pt-16 pl-64 pb-20">
+      <div className="pt-14 pl-64 pb-20">
         {/* Header */}
-        <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
+        <div className="sticky top-14 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center space-x-3 mb-2">
