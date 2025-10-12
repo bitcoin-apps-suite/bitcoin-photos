@@ -90,7 +90,7 @@ body {
 }
 
 .gradient-duo-tone {
-  background: linear-gradient(135deg, #000000 0%, #ec4899 100%);
+  background: linear-gradient(90deg, #ec4899 0%, #000000 25%, #ec4899 50%, #000000 75%, #ec4899 100%);
 }
 
 .text-gradient-duo {

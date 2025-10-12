@@ -160,7 +160,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({ className = '' }) => {
   return (
     <div 
       ref={menuRef}
-      className={`flex items-center h-8 bg-gradient-to-b from-zinc-600 to-zinc-700 border-b border-zinc-800 text-xs font-medium text-white select-none fixed top-10 left-0 right-0 z-[10000] ${className}`}
+      className={`flex items-center h-8 bg-black border-b border-zinc-800 text-xs font-medium text-white select-none fixed top-10 left-0 right-0 z-[10000] ${className}`}
     >
       {/* Bitcoin Logo */}
       <div className="relative">

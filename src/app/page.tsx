@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
-import Dock from '@/components/Dock';
+import MinimalDock from '@/components/MinimalDock';
+import TickerSidebar from '@/components/TickerSidebar';
 import { Grid, List, Calendar, Upload, Image, Play, Video, Heart, Share2, Eye, TrendingUp, Coins, Camera } from 'lucide-react';
 
 export default function HomePage() {
@@ -502,9 +503,10 @@ export default function HomePage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
+      <TickerSidebar />
 
       {/* Main content area */}
-      <div className="pt-16 pl-64 pb-20">
+      <div className="pt-16 pl-64 pr-80 pb-20">
         {/* Toolbar */}
         <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-4">
           <div className="flex items-center justify-between">
@@ -629,7 +631,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <Dock />
+      <MinimalDock />
     </div>
   );
 }
