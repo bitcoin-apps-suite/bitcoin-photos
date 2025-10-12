@@ -1,0 +1,599 @@
+/* Token Page - Compact Refined Style with Pink Theme */
+.token-page {
+  background: #0a0a0a;
+  color: #ffffff;
+  min-height: 100vh;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding-top: 96px; /* 40px POC banner + 32px taskbar + 24px spacing */
+  font-weight: 300;
+  transition: margin-left 0.3s ease;
+}
+
+/* Adjust for DevSidebar on left and TickerSidebar on right */
+@media (min-width: 769px) {
+  .token-page {
+    margin-left: 260px;
+    margin-right: 280px;
+  }
+}
+
+.token-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Adjust container width when sidebars are present */
+@media (min-width: 769px) {
+  .token-container {
+    max-width: calc(100vw - 260px - 280px - 80px);
+  }
+}
+
+@media (min-width: 1440px) {
+  .token-container {
+    max-width: min(1200px, calc(100vw - 260px - 280px - 160px));
+  }
+}
+
+/* Token Hero - Full Width Black */
+.token-hero {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 40px;
+  text-align: center;
+  margin-bottom: 40px;
+  background: #000000;
+  /* Full viewport width - properly centered */
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  margin-top: -24px;
+  width: 100vw;
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+.token-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(90deg, #ec4899, #f97316);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  color: #000;
+}
+
+.token-hero h1 {
+  font-size: 42px;
+  font-weight: 200;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #ec4899, #f97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.token-tagline {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+/* Sections - Compact */
+section {
+  padding: 40px 0;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+section:first-of-type {
+  border-top: none;
+}
+
+section h2 {
+  font-size: 28px;
+  font-weight: 200;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+/* Philosophy Section - Compact */
+.philosophy-section {
+  background: #0a0a0a;
+}
+
+.philosophy-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.philosophy-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 18px;
+  font-weight: 300;
+}
+
+.philosophy-content strong {
+  font-weight: 500;
+  color: #ec4899;
+}
+
+/* Tokenomics Section */
+.tokenomics-section {
+  background: #0a0a0a;
+}
+
+.tokenomics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.tokenomics-card {
+  background: transparent;
+  border-left: 2px solid rgba(236, 72, 153, 0.3);
+  padding: 0 0 0 24px;
+  margin-bottom: 20px;
+}
+
+.tokenomics-card h3 {
+  font-size: 20px;
+  font-weight: 300;
+  margin: 0 0 20px 0;
+  color: #ec4899;
+  letter-spacing: -0.5px;
+}
+
+.big-number {
+  font-size: 48px;
+  font-weight: 200;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: -2px;
+}
+
+.tokenomics-card p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.distribution-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.distribution-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.distribution-item span:last-child {
+  color: #ec4899;
+  font-weight: 500;
+}
+
+.tokenomics-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tokenomics-card li {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 300;
+  position: relative;
+  padding-left: 20px;
+}
+
+.tokenomics-card li:last-child {
+  border-bottom: none;
+}
+
+.tokenomics-card li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #ec4899;
+  font-weight: bold;
+}
+
+/* How Works Section */
+.how-works-section {
+  background: #0a0a0a;
+}
+
+.how-works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.step-card {
+  text-align: center;
+  padding: 30px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.step-card:hover {
+  border-color: rgba(236, 72, 153, 0.3);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background: transparent;
+  border: 2px solid #ec4899;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 300;
+  color: #ec4899;
+  margin: 0 auto 20px;
+}
+
+.step-card h3 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  color: #ffffff;
+}
+
+.step-card p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Value Section */
+.value-section {
+  background: #0a0a0a;
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.value-card {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.value-card:hover {
+  border-color: rgba(236, 72, 153, 0.3);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.value-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.value-card h3 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+  color: #ec4899;
+}
+
+.value-card p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Roadmap Section */
+.roadmap-section {
+  background: #0a0a0a;
+}
+
+.roadmap-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.roadmap-timeline::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #ec4899, rgba(236, 72, 153, 0.2));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 80px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 22px;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  background: #ec4899;
+  border-radius: 50%;
+  border: 4px solid #0a0a0a;
+}
+
+.timeline-item.completed .timeline-marker {
+  background: #22c55e;
+}
+
+.timeline-item.current .timeline-marker {
+  background: #ec4899;
+  box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+}
+
+.timeline-content h3 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: #ffffff;
+}
+
+.timeline-content p {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 10px 0;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+.timeline-status {
+  font-size: 14px;
+  color: #ec4899;
+  font-weight: 500;
+}
+
+/* Contributors Section */
+.contributors-section {
+  background: #0a0a0a;
+}
+
+.contributors-section p {
+  text-align: center;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.contributors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.contributor-card {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 30px 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.contributor-card:hover {
+  border-color: rgba(236, 72, 153, 0.3);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.contributor-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #ec4899, #f97316);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin: 0 auto 20px;
+}
+
+.contributor-card h4 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 5px 0;
+  color: #ffffff;
+}
+
+.contributor-card p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 15px 0;
+  font-weight: 300;
+}
+
+.contribution-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(236, 72, 153, 0.2);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  border-radius: 100px;
+  font-size: 12px;
+  color: #ec4899;
+  font-weight: 500;
+}
+
+/* Get Started Section */
+.get-started-section {
+  text-align: center;
+  padding: 60px 20px;
+  background: #0a0a0a;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.get-started-section h2 {
+  font-size: 32px;
+  font-weight: 200;
+  margin: 0 0 20px 0;
+  color: #ffffff;
+  letter-spacing: -1px;
+}
+
+.get-started-section p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 40px 0;
+  font-weight: 300;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, #ec4899, #f97316);
+  color: #000;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+  background: transparent;
+  color: #ec4899;
+  border: 1px solid rgba(236, 72, 153, 0.5);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: rgba(236, 72, 153, 0.05);
+  border-color: #ec4899;
+  transform: translateY(-1px);
+}
+
+/* Typography Refinements */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  letter-spacing: -0.5px;
+}
+
+p {
+  font-weight: 300;
+}
+
+/* Responsive - Mobile Compact */
+@media (max-width: 768px) {
+  .token-hero h1 {
+    font-size: 32px;
+  }
+  
+  .token-tagline {
+    font-size: 14px;
+  }
+  
+  section h2 {
+    font-size: 24px;
+  }
+  
+  .tokenomics-grid,
+  .how-works-grid,
+  .value-grid,
+  .contributors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .roadmap-timeline::before {
+    left: 15px;
+  }
+  
+  .timeline-item {
+    padding-left: 50px;
+  }
+  
+  .timeline-marker {
+    left: 7px;
+  }
+}
