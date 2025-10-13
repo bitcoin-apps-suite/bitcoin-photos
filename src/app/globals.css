@@ -82,7 +82,7 @@ body {
 
 /* Duo-tone gradient utilities */
 .gradient-primary {
-  background: linear-gradient(135deg, #F7931A 0%, #ff8c00 100%);
+  background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
 }
 
 .gradient-secondary {
@@ -94,7 +94,7 @@ body {
 }
 
 .text-gradient-duo {
-  background: linear-gradient(135deg, #F7931A 0%, #4B0082 100%);
+  background: linear-gradient(135deg, #ec4899 0%, #4B0082 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
-import Dock from '@/components/Dock';
+import MinimalDock from '@/components/MinimalDock';
+import TickerSidebar from '@/components/TickerSidebar';
 import { BarChart3, TrendingUp, TrendingDown, Users, Eye, Heart, Coins, Camera, Share2, Activity, Calendar, DollarSign } from 'lucide-react';
 
 export default function AnalyticsPage() {
@@ -49,8 +50,9 @@ export default function AnalyticsPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
+      <TickerSidebar />
 
-      <div className="pt-16 pl-64 pb-20">
+      <div className="pt-16 pl-64 pr-80 pb-20">
         {/* Header */}
         <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="flex items-center justify-between">
@@ -298,7 +300,7 @@ export default function AnalyticsPage() {
         </div>
       </div>
 
-      <Dock />
+      <MinimalDock />
     </div>
   );
 }

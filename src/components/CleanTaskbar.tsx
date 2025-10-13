@@ -214,7 +214,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({ className = '' }) => {
               Bitcoin Drive
             </a>
             <a href="https://bitcoin-calendar.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-1.5 text-white no-underline text-xs transition-colors cursor-pointer hover:bg-white/10">
-              <span className="text-orange-500 mr-3 text-base font-bold">₿</span>
+              <span className="text-pink-500 mr-3 text-base font-bold">₿</span>
               Bitcoin Calendar
             </a>
             <a href="https://bitcoin-exchange-iota.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center px-4 py-1.5 text-white no-underline text-xs transition-colors cursor-pointer hover:bg-white/10">

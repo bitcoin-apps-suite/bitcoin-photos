@@ -60,7 +60,7 @@
 .token-badge {
   display: inline-block;
   padding: 8px 20px;
-  background: linear-gradient(90deg, #ec4899, #f97316);
+  background: linear-gradient(90deg, #ec4899, #be185d);
   border-radius: 100px;
   font-size: 14px;
   font-weight: 500;
@@ -76,7 +76,7 @@
   margin: 0 0 16px 0;
   line-height: 1.1;
   letter-spacing: -1px;
-  background: linear-gradient(90deg, #ec4899, #f97316);
+  background: linear-gradient(90deg, #ec4899, #be185d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -438,7 +438,7 @@ section h2 {
 .contributor-avatar {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, #ec4899, #f97316);
+  background: linear-gradient(135deg, #ec4899, #be185d);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -515,7 +515,7 @@ section h2 {
   text-decoration: none;
   transition: all 0.2s ease;
   letter-spacing: 0.5px;
-  background: linear-gradient(90deg, #ec4899, #f97316);
+  background: linear-gradient(90deg, #ec4899, #be185d);
   color: #000;
   border: none;
   cursor: pointer;

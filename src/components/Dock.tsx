@@ -55,8 +55,8 @@ export default function Dock({ className = '' }: DockProps) {
     }
     
     const colorMap: { [key: string]: string } = {
-      'text-orange-500': '#f97316',
-      'text-bitcoin-orange': '#f7931a',
+      'text-orange-500': '#ec4899',
+      'text-bitcoin-orange': '#ec4899',
       'text-yellow-500': '#eab308',
       'text-red-500': '#ef4444',
       'text-purple-500': '#a855f7',

@@ -2,11 +2,22 @@
 
 import React from 'react';
 import Link from 'next/link';
+import ProofOfConceptBar from '@/components/ProofOfConceptBar';
+import CleanTaskbar from '@/components/CleanTaskbar';
+import DevSidebar from '@/components/DevSidebar';
+import MinimalDock from '@/components/MinimalDock';
+import TickerSidebar from '@/components/TickerSidebar';
 import { Camera, TrendingUp, Coins, Shield, Zap, Users } from 'lucide-react';
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white">
+      <ProofOfConceptBar />
+      <CleanTaskbar />
+      <DevSidebar />
+      <TickerSidebar />
+      
+      <div className="pt-16 pl-64 pr-80 pb-20">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-6">
         <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 via-transparent to-secondary-500/10" />
@@ -50,7 +61,7 @@ export default function LandingPage() {
             </div>
 
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Coins size={32} className="text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Earn $bPhotos</h3>
@@ -219,6 +230,9 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+      </div>
+      
+      <MinimalDock />
     </div>
   );
 }

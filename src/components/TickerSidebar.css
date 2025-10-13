@@ -31,8 +31,8 @@
 
 .ticker-toggle {
   background: none;
-  border: 1px solid #ff9500;
-  color: #ff9500;
+  border: 1px solid #ec4899;
+  color: #ec4899;
   padding: 4px 8px;
   border-radius: 4px;
   cursor: pointer;
@@ -41,9 +41,9 @@
 }
 
 .ticker-toggle:hover {
-  background: #ff9500;
+  background: #ec4899;
   color: #000;
-  border-color: #ff9500;
+  border-color: #ec4899;
 }
 
 /* Collapsed state */
@@ -64,7 +64,7 @@
 .ticker-header h3 {
   font-size: 14px;
   font-weight: 600;
-  color: #F7931A;
+  color: #ec4899;
   margin: 0;
   letter-spacing: 0.5px;
 }
@@ -143,8 +143,8 @@
 /* Special tokens (BPHOTOS, BSV, Author) */
 .ticker-item.special {
   background: linear-gradient(135deg, #2a2a2a 0%, #333 100%);
-  border: 2px solid #F7931A;
-  box-shadow: 0 4px 12px rgba(247, 147, 26, 0.3);
+  border: 2px solid #ec4899;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
 }
 
 
@@ -164,7 +164,7 @@
   background: #222;
   border-color: #444;
   transform: translateX(-2px);
-  box-shadow: -2px 0 8px rgba(247, 147, 26, 0.1);
+  box-shadow: -2px 0 8px rgba(236, 72, 153, 0.1);
 }
 
 .ticker-symbol-row {
@@ -177,7 +177,7 @@
 .ticker-symbol {
   font-size: 14px;
   font-weight: bold;
-  color: #F7931A;
+  color: #ec4899;
 }
 
 .ticker-change {
@@ -306,7 +306,7 @@
 /* Animation for price updates */
 @keyframes priceUpdate {
   0% {
-    background-color: rgba(247, 147, 26, 0.2);
+    background-color: rgba(236, 72, 153, 0.2);
   }
   100% {
     background-color: transparent;

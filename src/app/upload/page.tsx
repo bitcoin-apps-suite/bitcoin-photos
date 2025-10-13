@@ -4,7 +4,8 @@ import React, { useState, useCallback } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
-import Dock from '@/components/Dock';
+import MinimalDock from '@/components/MinimalDock';
+import TickerSidebar from '@/components/TickerSidebar';
 import { Upload, Image, FileText, Zap, Camera, Lock, Coins, TrendingUp, Share2 } from 'lucide-react';
 
 export default function UploadPage() {
@@ -64,8 +65,9 @@ export default function UploadPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
+      <TickerSidebar />
 
-      <div className="pt-16 pl-64 pb-20">
+      <div className="pt-16 pl-64 pr-80 pb-20">
         {/* Header */}
         <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="flex items-center justify-between">
@@ -100,7 +102,7 @@ export default function UploadPage() {
                 onDragOver={handleDrag}
                 onDrop={handleDrop}
               >
-                <Upload size={48} className="mx-auto mb-4 text-primary-500" />
+                <Upload size={48} className="mx-auto mb-4 text-pink-500" />
                 <h3 className="text-xl font-semibold mb-2">Drop photos here or click to browse</h3>
                 <p className="text-white/60 mb-4">Supports JPG, PNG, WEBP up to 50MB each</p>
                 
@@ -263,7 +265,7 @@ export default function UploadPage() {
         </div>
       </div>
 
-      <Dock />
+      <MinimalDock />
     </div>
   );
 }

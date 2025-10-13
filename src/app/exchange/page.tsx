@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
-import Dock from '@/components/Dock';
+import MinimalDock from '@/components/MinimalDock';
+import TickerSidebar from '@/components/TickerSidebar';
 import { TrendingUp, TrendingDown, Search, Filter, Coins, Image, Eye, Heart, ArrowUpDown, BarChart3 } from 'lucide-react';
 
 interface PhotoShare {
@@ -130,8 +131,9 @@ export default function ExchangePage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
+      <TickerSidebar />
 
-      <div className="pt-14 pl-64 pb-20">
+      <div className="pt-14 pl-64 pr-80 pb-20">
         {/* Header */}
         <div className="sticky top-14 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="space-y-4">
@@ -311,7 +313,7 @@ export default function ExchangePage() {
         </div>
       </div>
 
-      <Dock />
+      <MinimalDock />
     </div>
   );
 }
