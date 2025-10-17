@@ -2,6 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import ProofOfConceptBar from '@/components/ProofOfConceptBar';
+import CleanTaskbar from '@/components/CleanTaskbar';
+import DevSidebar from '@/components/DevSidebar';
+import MinimalDock from '@/components/MinimalDock';
+import TickerSidebar from '@/components/TickerSidebar';
 import './contracts.css';
 
 interface Contract {
@@ -318,7 +323,12 @@ const ContractsPage: React.FC = () => {
   const filteredContracts = contracts.filter(c => c.category === activeTab);
 
   return (
-    <div className="app-wrapper">
+    <div className="min-h-screen bg-black text-white">
+      <ProofOfConceptBar />
+      <CleanTaskbar />
+      <DevSidebar />
+      <TickerSidebar />
+      
       <div className={`contracts-page ${mounted && !isMobile && !devSidebarCollapsed ? 'with-sidebar-expanded' : ''} ${mounted && !isMobile && devSidebarCollapsed ? 'with-sidebar-collapsed' : ''}`}>
         <div className="contracts-container">
           {/* Hero Section */}
@@ -554,6 +564,8 @@ const ContractsPage: React.FC = () => {
           )}
         </div>
       </div>
+      
+      <MinimalDock />
     </div>
   );
 };

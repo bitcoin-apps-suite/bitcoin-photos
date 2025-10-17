@@ -4,19 +4,16 @@
   color: #ffffff;
   min-height: 100vh;
   font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  padding-top: 96px;
+  padding-top: 96px; /* 40px POC banner + 32px taskbar + 24px spacing */
   font-weight: 300;
   transition: margin-left 0.3s ease;
 }
 
-/* Adjust for DevSidebar on desktop */
+/* Adjust for DevSidebar on left and TickerSidebar on right */
 @media (min-width: 769px) {
-  .contracts-page.with-sidebar-expanded {
-    margin-left: 40px;
-  }
-  
-  .contracts-page.with-sidebar-collapsed {
-    margin-left: 20px;
+  .contracts-page {
+    margin-left: 260px;
+    margin-right: 280px;
   }
 }
 
@@ -26,24 +23,16 @@
   padding: 0 40px;
 }
 
-/* Adjust container width when sidebar is present */
+/* Adjust container width when sidebars are present */
 @media (min-width: 769px) {
-  .contracts-page.with-sidebar-expanded .contracts-container {
-    max-width: min(1200px, calc(100vw - 260px - 80px));
-  }
-  
-  .contracts-page.with-sidebar-collapsed .contracts-container {
-    max-width: min(1200px, calc(100vw - 60px - 80px));
+  .contracts-container {
+    max-width: calc(100vw - 260px - 280px - 80px);
   }
 }
 
 @media (min-width: 1440px) {
-  .contracts-page.with-sidebar-expanded .contracts-container {
-    max-width: min(1200px, calc(100vw - 260px - 160px));
-  }
-  
-  .contracts-page.with-sidebar-collapsed .contracts-container {
-    max-width: min(1200px, calc(100vw - 60px - 160px));
+  .contracts-container {
+    max-width: min(1200px, calc(100vw - 260px - 280px - 160px));
   }
 }
 
