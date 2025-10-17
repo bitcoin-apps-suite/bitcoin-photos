@@ -765,7 +765,8 @@ A: Yes, all photos are encrypted before upload and stored securely.`
                           if (paragraph.startsWith('#')) {
                             const level = paragraph.match(/^#+/)?.[0].length || 1;
                             const text = paragraph.replace(/^#+\s/, '');
-                            const Tag = `h${Math.min(level + 2, 6)}` as keyof JSX.IntrinsicElements;
+                            const tagName = `h${Math.min(level + 2, 6)}`;
+                            const Tag = tagName as keyof React.JSX.IntrinsicElements;
                             return (
                               <Tag key={index} className="text-primary-500 font-semibold mt-6 mb-3">
                                 {text}
