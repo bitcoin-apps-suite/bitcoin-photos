@@ -103,6 +103,7 @@ export default function DevSidebar() {
     // Development
     { divider: true },
     { section: 'DEVELOPMENT' },
+    { path: '/contracts', icon: Briefcase, label: 'Dev Contracts', badge: issueCount > 0 ? String(issueCount) : '0' },
     { path: '/api', icon: Package, label: 'API Reference' },
     { path: 'https://github.com/bitcoin-apps-suite/bitcoin-photos', icon: Github, label: 'GitHub Repository', external: true },
     { path: 'https://github.com/bitcoin-apps-suite/bitcoin-photos/issues', icon: FileCode, label: 'Issues', badge: issueCount > 0 ? String(issueCount) : '0', external: true },
