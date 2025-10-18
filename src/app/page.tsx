@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
+import MinimalDock from '@/components/MinimalDock';
 import TickerSidebar from '@/components/TickerSidebar';
 import { Grid, List, Calendar, Upload, Image, Play, Video, Heart, Share2, Eye, TrendingUp, Coins, Camera } from 'lucide-react';
 
@@ -630,6 +631,7 @@ export default function HomePage() {
         </div>
       </div>
 
+      <MinimalDock />
     </div>
   );
 }
