@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import '../mobile/mobile-bwallet.css';
+import MobileShellInit from '../mobile/MobileShellInit';
+
 export const metadata: Metadata = {
   title: "Bitcoin Photos - Auto-NFT Your Images & Trade Shares",
   description: "Auto-NFT your photos, encrypt them, and trade image shares on Bitcoin. Earn $bPhotos tokens for your digital content.",
@@ -13,7 +16,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <MobileShellInit />{children}</body>
     </html>
   );
 }
