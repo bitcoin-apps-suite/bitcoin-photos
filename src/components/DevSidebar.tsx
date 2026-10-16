@@ -97,7 +97,7 @@ export default function DevSidebar() {
     { divider: true },
     { section: 'SYSTEM' },
     { path: '/analytics', icon: Activity, label: 'Analytics' },
-    { path: '/creators', icon: Users, label: 'Top Creators', badge: '156' },
+    { path: '/creators', icon: Users, label: 'Top Creators' },
     { path: '/docs', icon: BookOpen, label: 'Documentation' },
     
     // Development
@@ -116,11 +116,12 @@ export default function DevSidebar() {
   ]
 
   const stats = {
-    totalPhotos: '45,789',
-    autoNFTs: '12,456',
-    activeTraders: '2,341',
-    tradingVolume: '$126.8K',
-    collections: '1,247'
+    // No network-wide stats are collected yet; show zeros rather than made-up numbers.
+    totalPhotos: '0',
+    autoNFTs: '0',
+    activeTraders: '0',
+    tradingVolume: '$0',
+    collections: '0'
   }
 
   return (
