@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import WalletButton from './WalletButton';
 
 interface MenuItem {
   label?: string;
@@ -319,10 +320,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({ className = '' }) => {
           </a>
         </div>
 
-        <div className="flex items-center gap-2 text-xs">
-          <span className="text-green-400">●</span>
-          <span>Connected</span>
-        </div>
+        <WalletButton className="!py-0.5 !text-xs" />
       </div>
 
       {/* Mobile Menu Overlay */}

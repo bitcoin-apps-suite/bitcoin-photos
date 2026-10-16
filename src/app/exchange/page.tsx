@@ -5,7 +5,6 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import TickerSidebar from '@/components/TickerSidebar';
 import { TrendingUp, TrendingDown, Search, Filter, Coins, Image, Eye, Heart, ArrowUpDown, BarChart3 } from 'lucide-react';
 
 interface PhotoShare {
@@ -28,78 +27,7 @@ export default function ExchangePage() {
   const [sortBy, setSortBy] = useState<'price' | 'volume' | 'change' | 'marketCap'>('volume');
   const [filterCategory, setFilterCategory] = useState<string>('all');
 
-  const photoShares: PhotoShare[] = [
-    {
-      id: '1',
-      title: 'Sunset Beach Collection',
-      creator: 'PhotoMaster',
-      totalShares: 10000,
-      price: 0.0847,
-      change24h: 15.2,
-      volume24h: 23400,
-      marketCap: 847000,
-      likes: 324,
-      views: 12450,
-      lastSale: 0.0823,
-      category: 'Landscape'
-    },
-    {
-      id: '2',
-      title: 'Neon Dreams Series',
-      creator: 'UrbanLens',
-      totalShares: 7500,
-      price: 0.1234,
-      change24h: 31.4,
-      volume24h: 82100,
-      marketCap: 925500,
-      likes: 678,
-      views: 23410,
-      lastSale: 0.0939,
-      category: 'Urban'
-    },
-    {
-      id: '3',
-      title: 'Mountain Vista Limited',
-      creator: 'NatureCap',
-      totalShares: 5000,
-      price: 0.0567,
-      change24h: 22.1,
-      volume24h: 41000,
-      marketCap: 283500,
-      likes: 445,
-      views: 15670,
-      lastSale: 0.0464,
-      category: 'Landscape'
-    },
-    {
-      id: '4',
-      title: 'Street Art Moments',
-      creator: 'GraffitiGuru',
-      totalShares: 12000,
-      price: 0.0321,
-      change24h: -3.2,
-      volume24h: 18900,
-      marketCap: 385200,
-      likes: 234,
-      views: 8920,
-      lastSale: 0.0332,
-      category: 'Street'
-    },
-    {
-      id: '5',
-      title: 'Portrait Elegance',
-      creator: 'StudioPro',
-      totalShares: 3000,
-      price: 0.2156,
-      change24h: 8.7,
-      volume24h: 15600,
-      marketCap: 646800,
-      likes: 892,
-      views: 18920,
-      lastSale: 0.1983,
-      category: 'Portrait'
-    }
-  ];
+  const photoShares: PhotoShare[] = [];
 
   const categories = ['all', 'Landscape', 'Urban', 'Street', 'Portrait', 'Abstract', 'Wildlife'];
 
@@ -131,9 +59,8 @@ export default function ExchangePage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
-      <TickerSidebar />
 
-      <div className="pt-14 pl-64 pr-80 pb-20">
+      <div className="pt-14 pl-64 pr-6 pb-20">
         {/* Header */}
         <div className="sticky top-14 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="space-y-4">
@@ -250,6 +177,7 @@ export default function ExchangePage() {
                   </tr>
                 </thead>
                 <tbody>
+                  {filteredShares.length === 0 && <tr><td colSpan={8} className="py-12 text-center text-white/50">No photo shares are listed yet.</td></tr>}
                   {filteredShares.map((share, index) => (
                     <tr key={share.id} className="border-t border-white/5 hover:bg-white/5 transition-colors">
                       <td className="p-4">

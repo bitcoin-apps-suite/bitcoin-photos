@@ -5,7 +5,6 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import TickerSidebar from '@/components/TickerSidebar';
 import { Camera, TrendingUp, Users, Eye, Heart, Star, Award, Coins, Image, Activity } from 'lucide-react';
 
 interface Creator {
@@ -28,98 +27,7 @@ export default function CreatorsPage() {
   const [filter, setFilter] = useState<'all' | 'trending' | 'top-earners' | 'most-followed'>('all');
   const [sortBy, setSortBy] = useState<'earnings' | 'followers' | 'photos' | 'views'>('earnings');
 
-  const creators: Creator[] = [
-    {
-      id: '1',
-      handle: 'streetphoto_btc',
-      name: 'Alex Chen',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
-      verified: true,
-      followers: 12400,
-      totalPhotos: 847,
-      totalEarnings: 23400,
-      monthlyViews: 156000,
-      category: 'Street Photography',
-      joinedDate: 'March 2023',
-      topPhoto: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop',
-      bio: 'Capturing urban life through the lens of Bitcoin economics'
-    },
-    {
-      id: '2',
-      handle: 'nature_nft',
-      name: 'Maria Santos',
-      avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b05b?w=150&h=150&fit=crop&crop=face',
-      verified: true,
-      followers: 18200,
-      totalPhotos: 1234,
-      totalEarnings: 45600,
-      monthlyViews: 234000,
-      category: 'Nature & Landscape',
-      joinedDate: 'January 2023',
-      topPhoto: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-      bio: 'Preserving nature\'s beauty on the blockchain forever'
-    },
-    {
-      id: '3',
-      handle: 'portrait_pro',
-      name: 'David Kim',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
-      verified: false,
-      followers: 8900,
-      totalPhotos: 567,
-      totalEarnings: 12300,
-      monthlyViews: 89000,
-      category: 'Portrait',
-      joinedDate: 'June 2023',
-      topPhoto: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=300&fit=crop&crop=face',
-      bio: 'Professional portraits with soul and story'
-    },
-    {
-      id: '4',
-      handle: 'abstractart_btc',
-      name: 'Sarah Wilson',
-      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
-      verified: true,
-      followers: 15600,
-      totalPhotos: 723,
-      totalEarnings: 34500,
-      monthlyViews: 178000,
-      category: 'Abstract',
-      joinedDate: 'February 2023',
-      topPhoto: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop',
-      bio: 'Exploring the intersection of art and technology'
-    },
-    {
-      id: '5',
-      handle: 'macro_world',
-      name: 'James Rodriguez',
-      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
-      verified: false,
-      followers: 6700,
-      totalPhotos: 892,
-      totalEarnings: 8900,
-      monthlyViews: 67000,
-      category: 'Macro',
-      joinedDate: 'August 2023',
-      topPhoto: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop',
-      bio: 'Discovering beauty in the smallest details'
-    },
-    {
-      id: '6',
-      handle: 'night_photographer',
-      name: 'Lisa Zhang',
-      avatar: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face',
-      verified: true,
-      followers: 22100,
-      totalPhotos: 456,
-      totalEarnings: 56700,
-      monthlyViews: 312000,
-      category: 'Night Photography',
-      joinedDate: 'December 2022',
-      topPhoto: 'https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=400&h=300&fit=crop',
-      bio: 'Capturing the magic when the world sleeps'
-    }
-  ];
+  const creators: Creator[] = [];
 
   const filteredCreators = creators.sort((a, b) => {
     switch (sortBy) {
@@ -146,9 +54,8 @@ export default function CreatorsPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
-      <TickerSidebar />
 
-      <div className="pt-16 pl-64 pr-80 pb-20">
+      <div className="pt-16 pl-64 pr-6 pb-20">
         {/* Header */}
         <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="flex items-center justify-between">
@@ -221,6 +128,7 @@ export default function CreatorsPage() {
         <div className="p-6 space-y-6">
           {/* Creator Grid */}
           <div className="grid gap-6">
+            {filteredCreators.length === 0 && <p className="col-span-full py-12 text-center text-white/50">No creators yet. Be the first: save a photo on-chain from the Upload page.</p>}
             {filteredCreators.map((creator, index) => (
               <div key={creator.id} className="glass rounded-lg p-6 hover:bg-white/5 transition-colors">
                 <div className="flex items-start space-x-6">

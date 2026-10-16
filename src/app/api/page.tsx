@@ -6,7 +6,6 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import TickerSidebar from '@/components/TickerSidebar';
 import { 
   Server, Database, Zap, Shield, Clock, CheckCircle, 
   XCircle, AlertCircle, Code, FileText, ExternalLink,
@@ -137,9 +136,8 @@ export default function APIPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
-      <TickerSidebar />
 
-      <div className="pt-16 pl-64 pr-80 pb-20">
+      <div className="pt-16 pl-64 pr-6 pb-20">
         {/* Header */}
         <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="flex items-center justify-between">

@@ -5,7 +5,6 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import TickerSidebar from '@/components/TickerSidebar';
 import { Folder, Plus, Image, Eye, Heart, TrendingUp, Users, Lock, Unlock, Calendar, Share2 } from 'lucide-react';
 
 interface Collection {
@@ -27,92 +26,7 @@ export default function CollectionsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [filter, setFilter] = useState<'all' | 'public' | 'private'>('all');
 
-  const collections: Collection[] = [
-    {
-      id: '1',
-      name: 'Urban Landscapes',
-      description: 'A curated collection of city skylines and urban photography',
-      photoCount: 24,
-      views: 1250,
-      likes: 89,
-      isPublic: true,
-      created: '2024-01-15',
-      coverPhoto: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop',
-      totalValue: '$2,340.50',
-      sharesSold: 1850,
-      creator: 'You'
-    },
-    {
-      id: '2',
-      name: 'Nature Collection',
-      description: 'Beautiful landscapes and wildlife photography',
-      photoCount: 18,
-      views: 892,
-      likes: 156,
-      isPublic: true,
-      created: '2024-02-08',
-      coverPhoto: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-      totalValue: '$1,890.25',
-      sharesSold: 1200,
-      creator: 'You'
-    },
-    {
-      id: '3',
-      name: 'Private Moments',
-      description: 'Personal photography collection - Private access only',
-      photoCount: 32,
-      views: 0,
-      likes: 0,
-      isPublic: false,
-      created: '2024-01-28',
-      coverPhoto: 'https://images.unsplash.com/photo-1514315384763-ba401779410f?w=400&h=300&fit=crop',
-      totalValue: '$0.00',
-      sharesSold: 0,
-      creator: 'You'
-    },
-    {
-      id: '4',
-      name: 'Street Photography',
-      description: 'Candid moments captured on the streets',
-      photoCount: 45,
-      views: 2150,
-      likes: 234,
-      isPublic: true,
-      created: '2024-03-01',
-      coverPhoto: 'https://images.unsplash.com/photo-1519167758481-83f29c8f498f?w=400&h=300&fit=crop',
-      totalValue: '$4,250.75',
-      sharesSold: 2890,
-      creator: 'You'
-    },
-    {
-      id: '5',
-      name: 'Abstract Art',
-      description: 'Creative and artistic photography experiments',
-      photoCount: 12,
-      views: 456,
-      likes: 67,
-      isPublic: true,
-      created: '2024-02-20',
-      coverPhoto: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
-      totalValue: '$980.50',
-      sharesSold: 670,
-      creator: 'You'
-    },
-    {
-      id: '6',
-      name: 'Portfolio Highlights',
-      description: 'Best shots from my photography career',
-      photoCount: 8,
-      views: 3450,
-      likes: 456,
-      isPublic: true,
-      created: '2024-01-05',
-      coverPhoto: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?w=400&h=300&fit=crop',
-      totalValue: '$6,780.25',
-      sharesSold: 4200,
-      creator: 'You'
-    }
-  ];
+  const collections: Collection[] = [];
 
   const filteredCollections = collections.filter(collection => {
     if (filter === 'public') return collection.isPublic;
@@ -128,9 +42,8 @@ export default function CollectionsPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
-      <TickerSidebar />
 
-      <div className="pt-16 pl-64 pr-80 pb-20">
+      <div className="pt-16 pl-64 pr-6 pb-20">
         {/* Header */}
         <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="flex items-center justify-between">
@@ -208,6 +121,7 @@ export default function CollectionsPage() {
         <div className="p-6">
           {viewMode === 'grid' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredCollections.length === 0 && <p className="col-span-full py-12 text-center text-white/50">No collections yet. Collections appear here once photos are saved on-chain.</p>}
               {filteredCollections.map((collection) => (
                 <div key={collection.id} className="glass rounded-lg overflow-hidden hover:bg-white/5 transition-all group cursor-pointer">
                   <div className="relative aspect-video">
