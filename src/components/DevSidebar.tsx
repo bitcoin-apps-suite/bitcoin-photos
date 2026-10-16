@@ -1,62 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSidebarCollapsed } from '@/lib/clientStore'
 import { usePathname } from 'next/navigation'
-import { 
-  ChevronLeft,
-  ChevronRight,
-  Monitor,
-  FileCode,
-  Users,
-  FileText,
-  Coins,
-  Github,
-  GitPullRequest,
-  ExternalLink,
-  BookOpen,
-  History,
-  CheckCircle,
-  ListTodo,
-  Briefcase,
-  Terminal,
-  Package,
-  Download,
-  Upload,
-  Lock,
-  Unlock,
-  Activity,
-  Clock,
-  Cpu,
-  Server,
-  Zap,
-  Camera,
-  TrendingUp,
-  Share2
-} from 'lucide-react'
+import { ChevronLeft, ChevronRight, FileCode, Users, FileText, Coins, Github, GitPullRequest, BookOpen, History, CheckCircle, Briefcase, Package, Upload, Activity, Camera, TrendingUp, Share2 } from 'lucide-react'
 import './DevSidebar.css'
 
 export default function DevSidebar() {
   const pathname = usePathname()
-  const [isCollapsed, setIsCollapsed] = useState(false) // Always start with false for SSR
+  const [isCollapsed, setIsCollapsed] = useSidebarCollapsed()
   const [issueCount, setIssueCount] = useState<number>(0)
-  const [mounted, setMounted] = useState(false)
 
-  // Handle hydration
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration guard: must flip after mount
-    setMounted(true)
-    // Load saved state after mount
-    const saved = localStorage.getItem('devSidebarCollapsed')
-    if (saved !== null) {
-      setIsCollapsed(saved === 'true')
-    }
-  }, [])
-
-  useEffect(() => {
-    if (mounted) {
-      localStorage.setItem('devSidebarCollapsed', isCollapsed.toString())
-    }
-  }, [isCollapsed, mounted])
 
   // Fetch GitHub issues count
   useEffect(() => {

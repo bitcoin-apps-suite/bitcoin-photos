@@ -1,11 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import { Image, Zap, TrendingUp, TrendingDown, Eye, Heart, Share2, Filter, Search, Coins, Star } from 'lucide-react';
+import { Image as ImageIcon, Zap, TrendingUp, TrendingDown, Eye, Heart, Search, Star } from 'lucide-react';
 
 interface NFT {
   id: string;
@@ -108,7 +109,7 @@ export default function NFTGalleryPage() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6">
             <div className="glass rounded-lg p-3">
               <div className="flex items-center space-x-2 mb-1">
-                <Image size={16} className="text-blue-500" />
+                <ImageIcon size={16} className="text-blue-500" />
                 <span className="text-white/80 text-sm">Total NFTs</span>
               </div>
               <div className="text-xl font-bold text-white">{stats.total}</div>
@@ -190,7 +191,9 @@ export default function NFTGalleryPage() {
             {filteredNFTs.map((nft) => (
               <div key={nft.id} className="glass rounded-lg overflow-hidden hover:bg-white/5 transition-all group cursor-pointer">
                 <div className="relative aspect-square">
-                  <img
+                  <Image
+                    fill
+                    unoptimized
                     src={nft.image}
                     alt={nft.title}
                     className="w-full h-full object-cover"

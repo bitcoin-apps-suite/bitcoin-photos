@@ -6,11 +6,7 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import { 
-  Camera, Upload, Coins, TrendingUp, Shield, Zap, 
-  BookOpen, FileText, HelpCircle, ExternalLink,
-  ChevronRight, Search, Star, Lock, Share2
-} from 'lucide-react';
+import { Upload, Coins, TrendingUp, Shield, BookOpen, FileText, HelpCircle, ExternalLink, ChevronRight, Search } from 'lucide-react';
 
 interface DocSection {
   id: string;
@@ -665,7 +661,6 @@ A: Yes, all photos are encrypted before upload and stored securely.`
   })).filter(section => section.items.length > 0);
 
   const currentSection = filteredSections.find(s => s.id === activeSection);
-  const currentItem = currentSection?.items[0];
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -752,7 +747,6 @@ A: Yes, all photos are encrypted before upload and stored securely.`
                           if (paragraph.trim() === '') return null;
                           
                           if (paragraph.startsWith('```')) {
-                            const language = paragraph.slice(3);
                             return (
                               <div key={index} className="bg-gray-900 rounded-lg p-4 my-4 font-mono text-sm overflow-x-auto">
                                 <pre className="text-green-400">{paragraph}</pre>

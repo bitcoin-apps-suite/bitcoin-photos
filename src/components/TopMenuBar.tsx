@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { Github, BookOpen, FileText, ExternalLink } from 'lucide-react'
+import { Github, BookOpen } from 'lucide-react'
 import './TopMenuBar.css'
 
 interface MenuItem {
@@ -19,11 +19,7 @@ interface Menu {
   items: MenuItem[]
 }
 
-interface TopMenuBarProps {
-  onOpenApp?: (appName: string) => void
-}
-
-export default function TopMenuBar({ onOpenApp }: TopMenuBarProps) {
+export default function TopMenuBar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
   const [showBAppsMenu, setShowBAppsMenu] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)

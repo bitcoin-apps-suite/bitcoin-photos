@@ -6,11 +6,7 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import { 
-  Camera, Zap, Globe, TrendingUp, Shield, Database, 
-  Coins, Building2, Users, FileText, Search, Award,
-  ArrowRight, CheckCircle, Layers, Network, Brain
-} from 'lucide-react';
+import { Camera, Zap, Globe, TrendingUp, Shield, Database, Coins, Building2, Users, Award, ArrowRight, CheckCircle, Network, Brain } from 'lucide-react';
 import './AboutPage.css';
 
 export default function AboutPage() {

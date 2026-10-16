@@ -1,17 +1,17 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
 import SaveOnChain from '@/components/SaveOnChain';
-import { Grid, List, Calendar, Upload, Image, Play, Video, Heart, Share2, Eye, TrendingUp, Coins, Camera } from 'lucide-react';
+import { Grid, List, Calendar, Upload, Heart, Share2, Eye, Coins, Camera } from 'lucide-react';
 
 export default function HomePage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list' | 'timeline'>('grid');
   const [selectedItems, setSelectedItems] = useState<Set<string>>(new Set());
-  const [sidebarOpen, setSidebarOpen] = useState(true);
 
   // Photos come from the signed-in user's own wallet (see Save on-chain below); no sample data.
   const photos: Array<{ id: string; src: string; title: string; date: string; shares: number; price: string; volume: string; change: string; likes: number; views: number; isAutoNFT: boolean }> = [];
@@ -35,7 +35,9 @@ export default function HomePage() {
     >
       {/* Photo display */}
       <div className="aspect-square bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
-        <img 
+        <Image
+          fill
+          unoptimized
           src={photo.src} 
           alt={photo.title}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
@@ -184,8 +186,10 @@ export default function HomePage() {
             <div className="space-y-2">
               {photos.map((photo) => (
                 <div key={photo.id} className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-                  <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded overflow-hidden flex items-center justify-center">
-                    <img 
+                  <div className="relative w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded overflow-hidden flex items-center justify-center">
+                    <Image
+                      fill
+                      unoptimized
                       src={photo.src} 
                       alt={photo.title}
                       className="w-full h-full object-cover"

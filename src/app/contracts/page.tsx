@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { useMounted, useSidebarCollapsed, useIsMobile } from '@/lib/clientStore';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
@@ -35,12 +35,11 @@ interface Contract {
 }
 
 const ContractsPage: React.FC = () => {
-  const router = useRouter();
-  const [mounted, setMounted] = useState(false);
-  const [devSidebarCollapsed, setDevSidebarCollapsed] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [contracts, setContracts] = useState<Contract[]>([]);
-  const [loading, setLoading] = useState(false);
+  const mounted = useMounted();
+  const [devSidebarCollapsed] = useSidebarCollapsed();
+  const isMobile = useIsMobile();
+  const [contracts, setContracts] = useState<Contract[]>(loadBitcoinPhotosContracts);
+  const [loading] = useState(false);
   const [selectedContract, setSelectedContract] = useState<Contract | null>(null);
   const [showClaimModal, setShowClaimModal] = useState(false);
   const [activeTab, setActiveTab] = useState<'developer' | 'design'>('developer');
@@ -223,44 +222,9 @@ const ContractsPage: React.FC = () => {
       }
     ];
 
-    setContracts(bitcoinPhotosContracts);
-    setLoading(false);
-  };
+    return bitcoinPhotosContracts;
+  }
 
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration guard: must flip after mount
-    setMounted(true);
-    
-    const saved = localStorage.getItem('devSidebarCollapsed');
-    setDevSidebarCollapsed(saved === 'true');
-    setIsMobile(window.innerWidth <= 768);
-
-    const handleStorageChange = () => {
-      const saved = localStorage.getItem('devSidebarCollapsed');
-      setDevSidebarCollapsed(saved === 'true');
-    };
-    
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('resize', handleResize);
-    
-    const checkSidebarState = setInterval(() => {
-      const saved = localStorage.getItem('devSidebarCollapsed');
-      setDevSidebarCollapsed(saved === 'true');
-    }, 100);
-
-    // Load bitcoin-photos contracts
-    loadBitcoinPhotosContracts();
-    
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('resize', handleResize);
-      clearInterval(checkSidebarState);
-    };
-  }, []);
 
 
   const handleClaimContract = async () => {

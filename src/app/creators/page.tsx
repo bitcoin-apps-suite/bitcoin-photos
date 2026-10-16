@@ -1,11 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import { Camera, TrendingUp, Users, Eye, Heart, Star, Award, Coins, Image, Activity } from 'lucide-react';
+import { Camera, Users, Eye, Star, Award, Coins, Image as ImageIcon } from 'lucide-react';
 
 interface Creator {
   id: string;
@@ -24,7 +25,6 @@ interface Creator {
 }
 
 export default function CreatorsPage() {
-  const [filter, setFilter] = useState<'all' | 'trending' | 'top-earners' | 'most-followed'>('all');
   const [sortBy, setSortBy] = useState<'earnings' | 'followers' | 'photos' | 'views'>('earnings');
 
   const creators: Creator[] = [];
@@ -107,7 +107,7 @@ export default function CreatorsPage() {
 
             <div className="glass rounded-lg p-4">
               <div className="flex items-center space-x-2 mb-2">
-                <Image size={20} className="text-purple-500" />
+                <ImageIcon size={20} className="text-purple-500" />
                 <span className="text-white/80 text-sm">Photos Uploaded</span>
               </div>
               <div className="text-2xl font-bold text-white">156K</div>
@@ -136,8 +136,11 @@ export default function CreatorsPage() {
                   <div className="flex items-center space-x-4">
                     <div className="text-3xl font-bold text-white/40">#{index + 1}</div>
                     <div className="relative">
-                      <img 
-                        src={creator.avatar} 
+                      <Image
+                        src={creator.avatar}
+                        width={80}
+                        height={80}
+                        unoptimized
                         alt={creator.name}
                         className="w-20 h-20 rounded-full object-cover border-2 border-white/20"
                       />
