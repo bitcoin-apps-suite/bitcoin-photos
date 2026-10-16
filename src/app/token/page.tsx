@@ -94,7 +94,7 @@ export default function TokenPage() {
             <div className="step-card">
               <div className="step-number">1</div>
               <h3>Upload</h3>
-              <p>Upload your photos and they're automatically converted to tradeable NFTs</p>
+              <p>Upload your photos and they&apos;re automatically converted to tradeable NFTs</p>
             </div>
             <div className="step-card">
               <div className="step-number">2</div>

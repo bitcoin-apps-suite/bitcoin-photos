@@ -74,7 +74,7 @@ export default function CreatorsPage() {
             <div className="flex items-center space-x-4">
               <select 
                 value={sortBy} 
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                 className="bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-primary-500"
               >
                 <option value="earnings" className="bg-gray-900">Top Earners</option>

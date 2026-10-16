@@ -81,7 +81,7 @@ export default function CollectionsPage() {
               {/* Filter */}
               <select
                 value={filter}
-                onChange={(e) => setFilter(e.target.value as any)}
+                onChange={(e) => setFilter(e.target.value as typeof filter)}
                 className="bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white text-sm focus:outline-none focus:border-primary-500"
               >
                 <option value="all" className="bg-gray-900">All Collections</option>

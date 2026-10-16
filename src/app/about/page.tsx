@@ -36,8 +36,8 @@ export default function AboutPage() {
               </h1>
               
               <p className="hero-subtitle">
-                Bitcoin Photos is the world's first decentralized marketplace for instant 
-                commercial image licensing, powered by Teranode's infinite scalability and 
+                Bitcoin Photos is the world&apos;s first decentralized marketplace for instant 
+                commercial image licensing, powered by Teranode&apos;s infinite scalability and 
                 backed by dividend-bearing $bPhotos equity tokens.
               </p>
 
@@ -80,7 +80,7 @@ export default function AboutPage() {
                   <Brain className="icon" />
                 </div>
                 <h3>AI Abundance</h3>
-                <p>Anyone can generate stunning images with AI, making "rare" NFTs meaningless. The scarcity model is dead.</p>
+                <p>Anyone can generate stunning images with AI, making &quot;rare&quot; NFTs meaningless. The scarcity model is dead.</p>
               </div>
 
               <div className="problem-card">
@@ -212,7 +212,7 @@ export default function AboutPage() {
           <section className="about-section">
             <div className="section-header">
               <h2>Massive Market Opportunity</h2>
-              <p>From family photos to enterprise content, we're building the infrastructure for all visual commerce</p>
+              <p>From family photos to enterprise content, we&apos;re building the infrastructure for all visual commerce</p>
             </div>
 
             <div className="market-segments">
@@ -295,7 +295,7 @@ export default function AboutPage() {
           {/* Future Vision */}
           <section className="about-section">
             <div className="section-header">
-              <h2>The Future We're Building</h2>
+              <h2>The Future We&apos;re Building</h2>
               <p>Beyond photos: the infrastructure for all digital content commerce</p>
             </div>
 
@@ -324,7 +324,7 @@ export default function AboutPage() {
           <section className="about-cta">
             <div className="cta-content">
               <h2>Join the Visual Commerce Revolution</h2>
-              <p>Whether you're a creator, investor, or business owner, Bitcoin Photos offers unprecedented opportunities in the new digital economy.</p>
+              <p>Whether you&apos;re a creator, investor, or business owner, Bitcoin Photos offers unprecedented opportunities in the new digital economy.</p>
               
               <div className="cta-actions">
                 <Link href="/upload" className="btn-primary large">

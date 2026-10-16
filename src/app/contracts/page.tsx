@@ -51,41 +51,7 @@ const ContractsPage: React.FC = () => {
     estimatedDays: 7
   });
 
-  useEffect(() => {
-    setMounted(true);
-    
-    const saved = localStorage.getItem('devSidebarCollapsed');
-    setDevSidebarCollapsed(saved === 'true');
-    setIsMobile(window.innerWidth <= 768);
-
-    const handleStorageChange = () => {
-      const saved = localStorage.getItem('devSidebarCollapsed');
-      setDevSidebarCollapsed(saved === 'true');
-    };
-    
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('resize', handleResize);
-    
-    const checkSidebarState = setInterval(() => {
-      const saved = localStorage.getItem('devSidebarCollapsed');
-      setDevSidebarCollapsed(saved === 'true');
-    }, 100);
-
-    // Load bitcoin-photos contracts
-    loadBitcoinPhotosContracts();
-    
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('resize', handleResize);
-      clearInterval(checkSidebarState);
-    };
-  }, []);
-
-  const loadBitcoinPhotosContracts = () => {
+  function loadBitcoinPhotosContracts() {
     const bitcoinPhotosContracts: Contract[] = [
       {
         id: 'contract-1',
@@ -260,6 +226,42 @@ const ContractsPage: React.FC = () => {
     setContracts(bitcoinPhotosContracts);
     setLoading(false);
   };
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration guard: must flip after mount
+    setMounted(true);
+    
+    const saved = localStorage.getItem('devSidebarCollapsed');
+    setDevSidebarCollapsed(saved === 'true');
+    setIsMobile(window.innerWidth <= 768);
+
+    const handleStorageChange = () => {
+      const saved = localStorage.getItem('devSidebarCollapsed');
+      setDevSidebarCollapsed(saved === 'true');
+    };
+    
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('resize', handleResize);
+    
+    const checkSidebarState = setInterval(() => {
+      const saved = localStorage.getItem('devSidebarCollapsed');
+      setDevSidebarCollapsed(saved === 'true');
+    }, 100);
+
+    // Load bitcoin-photos contracts
+    loadBitcoinPhotosContracts();
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('resize', handleResize);
+      clearInterval(checkSidebarState);
+    };
+  }, []);
+
 
   const handleClaimContract = async () => {
     if (!selectedContract || !claimForm.githubUsername || !claimForm.handcashHandle) {

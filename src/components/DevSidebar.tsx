@@ -43,6 +43,7 @@ export default function DevSidebar() {
 
   // Handle hydration
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration guard: must flip after mount
     setMounted(true)
     // Load saved state after mount
     const saved = localStorage.getItem('devSidebarCollapsed')
@@ -74,7 +75,7 @@ export default function DevSidebar() {
 
   const menuItems: Array<{
     path?: string
-    icon?: any
+    icon?: React.ElementType
     label?: string
     badge?: string
     divider?: boolean
@@ -157,6 +158,7 @@ export default function DevSidebar() {
           }
 
           const Icon = item.icon
+          if (!Icon) return null
           const isActive = pathname === item.path
 
           if (item.external) {
