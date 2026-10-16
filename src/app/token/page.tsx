@@ -5,7 +5,6 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import TickerSidebar from '@/components/TickerSidebar';
 import './TokenPage.css';
 
 export default function TokenPage() {
@@ -14,7 +13,6 @@ export default function TokenPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
-      <TickerSidebar />
       
       <div className="token-page">
         <div className="token-container">

@@ -5,7 +5,7 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import TickerSidebar from '@/components/TickerSidebar';
+import { useWallet, inscribeFile } from '@/lib/bwallet';
 import { Upload, Image, FileText, Zap, Camera, Lock, Coins, TrendingUp, Share2 } from 'lucide-react';
 
 export default function UploadPage() {
@@ -45,15 +45,29 @@ export default function UploadPage() {
     }
   };
 
+  const { user, connect } = useWallet();
+  const [result, setResult] = useState<{ ok: boolean; text: string } | null>(null);
+
+  // Each photo is inscribed on-chain as a 1Sat ordinal from the user's own wallet.
+  // The wallet shows the fee and asks for approval; nothing is held by this site.
   const handleUpload = async () => {
+    setResult(null);
+    if (!user && !(await connect())) return;
     setUploading(true);
-    // Simulate upload process
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setUploading(false);
-    
-    // Show success message
-    alert(`Successfully uploaded ${uploadedFiles.length} photos! Auto-NFT minting will begin shortly.`);
-    setUploadedFiles([]);
+    const done: string[] = [];
+    try {
+      for (const file of uploadedFiles) {
+        done.push(await inscribeFile(file, 'Save photo on-chain'));
+      }
+      setResult({ ok: true, text: `Saved ${done.length} photo${done.length === 1 ? '' : 's'} on-chain.` });
+      setUploadedFiles([]);
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : 'The wallet did not complete the save.';
+      setResult({ ok: false, text: done.length ? `Saved ${done.length}, then stopped: ${msg}` : msg });
+      setUploadedFiles((prev) => prev.slice(done.length));
+    } finally {
+      setUploading(false);
+    }
   };
 
   const removeFile = (index: number) => {
@@ -65,9 +79,8 @@ export default function UploadPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
-      <TickerSidebar />
 
-      <div className="pt-16 pl-64 pr-80 pb-20">
+      <div className="pt-16 pl-64 pr-6 pb-20">
         {/* Header */}
         <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="flex items-center justify-between">
@@ -151,18 +164,17 @@ export default function UploadPage() {
 
                   <div className="mt-6 flex items-center justify-between">
                     <div className="text-sm text-white/70">
-                      Total cost: <span className="text-primary-500 font-semibold">
-                        {(uploadedFiles.length * 0.1).toFixed(1)} $bPhotos
-                      </span>
+                      Network fee: shown by your wallet before you approve
                     </div>
                     <button
                       onClick={handleUpload}
                       disabled={uploading}
                       className="bg-gradient-duo-tone text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
                     >
-                      {uploading ? 'Uploading...' : `Upload ${uploadedFiles.length} Photos`}
+                      {uploading ? 'Waiting for wallet…' : user ? `Save ${uploadedFiles.length} on-chain` : 'Sign in with bWalletX to save'}
                     </button>
                   </div>
+                  {result && <p className={`mt-3 text-sm ${result.ok ? 'text-green-400' : 'text-red-400'}`}>{result.text}</p>}
                 </div>
               )}
             </div>
@@ -172,93 +184,34 @@ export default function UploadPage() {
               <div className="glass rounded-lg p-4">
                 <div className="flex items-center space-x-2 mb-3">
                   <Zap size={20} className="text-yellow-500" />
-                  <h3 className="font-semibold">Auto-NFT Process</h3>
+                  <h3 className="font-semibold">How saving works</h3>
                 </div>
                 <div className="space-y-2 text-sm text-white/70">
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 bg-primary-500 rounded-full"></span>
-                    <span>Upload & encrypt photos</span>
+                    <span>Pick photos (up to 5 MB each)</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 bg-primary-500 rounded-full"></span>
-                    <span>Generate metadata & rarity score</span>
+                    <span>Your wallet shows the network fee</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 bg-primary-500 rounded-full"></span>
-                    <span>Mint NFT automatically</span>
+                    <span>Inscribed on-chain as a 1Sat ordinal</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 bg-primary-500 rounded-full"></span>
-                    <span>Create 1000 tradeable shares</span>
+                    <span>Held in your own wallet</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <span className="w-2 h-2 bg-primary-500 rounded-full"></span>
-                    <span>List on share exchange</span>
+                    <span>Share trading: not live yet</span>
                   </div>
                 </div>
               </div>
 
-              <div className="glass rounded-lg p-4">
-                <div className="flex items-center space-x-2 mb-3">
-                  <Coins size={20} className="text-primary-500" />
-                  <h3 className="font-semibold">Rewards</h3>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-white/70">Auto-NFT Reward:</span>
-                    <span className="text-green-400">+10 $bPhotos</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/70">Creator Shares:</span>
-                    <span className="text-blue-400">100 shares (10%)</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/70">Trading Royalties:</span>
-                    <span className="text-purple-400">2.5% per trade</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="glass rounded-lg p-4">
-                <div className="flex items-center space-x-2 mb-3">
-                  <Lock size={20} className="text-green-500" />
-                  <h3 className="font-semibold">Security</h3>
-                </div>
-                <div className="space-y-2 text-sm text-white/70">
-                  <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                    <span>End-to-end encryption</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                    <span>IPFS decentralized storage</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                    <span>Blockchain ownership proof</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="glass rounded-lg p-4">
-                <div className="flex items-center space-x-2 mb-3">
-                  <TrendingUp size={20} className="text-blue-500" />
-                  <h3 className="font-semibold">Recent Activity</h3>
-                </div>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-white/70">Photos uploaded today:</span>
-                    <span className="text-white">1,247</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/70">NFTs minted:</span>
-                    <span className="text-white">1,198</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-white/70">Avg. share price:</span>
-                    <span className="text-primary-500">$0.0234</span>
-                  </div>
-                </div>
+              <div className="glass rounded-lg p-4 text-sm text-white/70">
+                Inscriptions are public: anyone can view a photo saved on-chain. Do not save private photos.
               </div>
             </div>
           </div>

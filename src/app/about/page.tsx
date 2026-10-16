@@ -6,7 +6,6 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import TickerSidebar from '@/components/TickerSidebar';
 import { 
   Camera, Zap, Globe, TrendingUp, Shield, Database, 
   Coins, Building2, Users, FileText, Search, Award,
@@ -20,9 +19,8 @@ export default function AboutPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
-      <TickerSidebar />
 
-      <div className="pt-16 pl-64 pr-80 pb-20">
+      <div className="pt-16 pl-64 pr-6 pb-20">
         <div className="about-container">
           {/* Hero Section */}
           <section className="about-hero">

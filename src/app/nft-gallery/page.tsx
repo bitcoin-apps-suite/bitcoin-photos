@@ -5,7 +5,6 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import TickerSidebar from '@/components/TickerSidebar';
 import { Image, Zap, TrendingUp, TrendingDown, Eye, Heart, Share2, Filter, Search, Coins, Star } from 'lucide-react';
 
 interface NFT {
@@ -35,140 +34,7 @@ export default function NFTGalleryPage() {
   const [sortBy, setSortBy] = useState<'price' | 'rarity' | 'volume' | 'recent'>('recent');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const nfts: NFT[] = [
-    {
-      id: '1',
-      tokenId: 'BNFT-001',
-      title: 'Sunset Over Silicon Valley',
-      creator: 'PhotoMaster',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=400&fit=crop',
-      price: 0.0847,
-      priceChange: 15.2,
-      volume24h: 2340,
-      likes: 324,
-      views: 1245,
-      rarity: 92,
-      shares: { total: 1000, available: 650, owned: 0 },
-      traits: [
-        { trait: 'Camera', value: 'Canon EOS R5', rarity: 25 },
-        { trait: 'Location', value: 'California', rarity: 45 },
-        { trait: 'Time', value: 'Golden Hour', rarity: 30 },
-        { trait: 'Style', value: 'Landscape', rarity: 60 }
-      ],
-      mintDate: '2024-01-15',
-      isOwned: false
-    },
-    {
-      id: '2',
-      tokenId: 'BNFT-002',
-      title: 'Urban Neon Dreams',
-      creator: 'CityLens',
-      image: 'https://images.unsplash.com/photo-1519167758481-83f29c8f498f?w=400&h=400&fit=crop',
-      price: 0.1234,
-      priceChange: 31.4,
-      volume24h: 8210,
-      likes: 678,
-      views: 2341,
-      rarity: 97,
-      shares: { total: 1000, available: 250, owned: 100 },
-      traits: [
-        { trait: 'Camera', value: 'Sony A7R IV', rarity: 35 },
-        { trait: 'Location', value: 'Tokyo', rarity: 15 },
-        { trait: 'Time', value: 'Night', rarity: 40 },
-        { trait: 'Style', value: 'Street', rarity: 50 }
-      ],
-      mintDate: '2024-02-08',
-      isOwned: true
-    },
-    {
-      id: '3',
-      tokenId: 'BNFT-003',
-      title: 'Mountain Vista',
-      creator: 'NatureShot',
-      image: 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1f?w=400&h=400&fit=crop',
-      price: 0.0567,
-      priceChange: 22.1,
-      volume24h: 4100,
-      likes: 445,
-      views: 1567,
-      rarity: 85,
-      shares: { total: 1000, available: 800, owned: 200 },
-      traits: [
-        { trait: 'Camera', value: 'Nikon D850', rarity: 40 },
-        { trait: 'Location', value: 'Swiss Alps', rarity: 10 },
-        { trait: 'Time', value: 'Sunrise', rarity: 25 },
-        { trait: 'Style', value: 'Landscape', rarity: 60 }
-      ],
-      mintDate: '2024-01-28',
-      isOwned: true
-    },
-    {
-      id: '4',
-      tokenId: 'BNFT-004',
-      title: 'Street Art Fusion',
-      creator: 'UrbanEye',
-      image: 'https://images.unsplash.com/photo-1514315384763-ba401779410f?w=400&h=400&fit=crop',
-      price: 0.0321,
-      priceChange: -3.2,
-      volume24h: 1890,
-      likes: 234,
-      views: 892,
-      rarity: 78,
-      shares: { total: 1000, available: 900, owned: 0 },
-      traits: [
-        { trait: 'Camera', value: 'iPhone 14 Pro', rarity: 70 },
-        { trait: 'Location', value: 'Berlin', rarity: 30 },
-        { trait: 'Time', value: 'Afternoon', rarity: 55 },
-        { trait: 'Style', value: 'Street Art', rarity: 20 }
-      ],
-      mintDate: '2024-03-01',
-      isOwned: false
-    },
-    {
-      id: '5',
-      tokenId: 'BNFT-005',
-      title: 'Portrait Elegance',
-      creator: 'You',
-      image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=400&fit=crop',
-      price: 0.2156,
-      priceChange: 8.7,
-      volume24h: 1560,
-      likes: 892,
-      views: 1892,
-      rarity: 94,
-      shares: { total: 1000, available: 400, owned: 600 },
-      traits: [
-        { trait: 'Camera', value: 'Leica Q2', rarity: 5 },
-        { trait: 'Location', value: 'Paris', rarity: 20 },
-        { trait: 'Time', value: 'Golden Hour', rarity: 30 },
-        { trait: 'Style', value: 'Portrait', rarity: 35 }
-      ],
-      mintDate: '2024-02-14',
-      isOwned: true
-    },
-    {
-      id: '6',
-      tokenId: 'BNFT-006',
-      title: 'Abstract Light Play',
-      creator: 'You',
-      image: 'https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=400&h=400&fit=crop',
-      price: 0.0890,
-      priceChange: 45.6,
-      volume24h: 5670,
-      likes: 567,
-      views: 2134,
-      rarity: 89,
-      shares: { total: 1000, available: 300, owned: 700 },
-      traits: [
-        { trait: 'Camera', value: 'Fuji X-T4', rarity: 30 },
-        { trait: 'Location', value: 'Studio', rarity: 50 },
-        { trait: 'Time', value: 'Controlled', rarity: 80 },
-        { trait: 'Style', value: 'Abstract', rarity: 15 }
-      ],
-      mintDate: '2024-02-28',
-      isOwned: true
-    }
-  ];
+  const nfts: NFT[] = [];
 
   const filteredNFTs = nfts
     .filter(nft => {
@@ -219,9 +85,8 @@ export default function NFTGalleryPage() {
       <ProofOfConceptBar />
       <CleanTaskbar />
       <DevSidebar />
-      <TickerSidebar />
 
-      <div className="pt-16 pl-64 pr-80 pb-20">
+      <div className="pt-16 pl-64 pr-6 pb-20">
         {/* Header */}
         <div className="sticky top-16 z-20 bg-black/90 backdrop-blur-md border-b border-white/10 p-6">
           <div className="flex items-center justify-between">
@@ -268,7 +133,7 @@ export default function NFTGalleryPage() {
                 <span className="text-white/80 text-sm">Avg. Rarity</span>
               </div>
               <div className="text-xl font-bold text-white">
-                {(nfts.reduce((sum, n) => sum + n.rarity, 0) / nfts.length).toFixed(0)}%
+                {(nfts.length ? nfts.reduce((sum, n) => sum + n.rarity, 0) / nfts.length : 0).toFixed(0)}%
               </div>
             </div>
           </div>
@@ -321,6 +186,7 @@ export default function NFTGalleryPage() {
         {/* NFT Grid */}
         <div className="p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredNFTs.length === 0 && <p className="col-span-full py-12 text-center text-white/50">No photo NFTs yet. Save a photo on-chain from the Upload page and it shows up here.</p>}
             {filteredNFTs.map((nft) => (
               <div key={nft.id} className="glass rounded-lg overflow-hidden hover:bg-white/5 transition-all group cursor-pointer">
                 <div className="relative aspect-square">
