@@ -1,11 +1,12 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useState } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import { Folder, Plus, Image, Eye, Heart, TrendingUp, Users, Lock, Unlock, Calendar, Share2 } from 'lucide-react';
+import { Plus, Image as ImageIcon, Eye, Heart, Lock, Unlock, Calendar, Share2 } from 'lucide-react';
 
 interface Collection {
   id: string;
@@ -125,7 +126,9 @@ export default function CollectionsPage() {
               {filteredCollections.map((collection) => (
                 <div key={collection.id} className="glass rounded-lg overflow-hidden hover:bg-white/5 transition-all group cursor-pointer">
                   <div className="relative aspect-video">
-                    <img
+                    <Image
+                      fill
+                      unoptimized
                       src={collection.coverPhoto}
                       alt={collection.name}
                       className="w-full h-full object-cover"
@@ -146,7 +149,7 @@ export default function CollectionsPage() {
                     </div>
                     <div className="absolute bottom-3 left-3 bg-black/70 backdrop-blur-sm rounded-lg px-2 py-1">
                       <div className="flex items-center space-x-1 text-xs">
-                        <Image size={12} />
+                        <ImageIcon size={12} />
                         <span>{collection.photoCount}</span>
                       </div>
                     </div>
@@ -195,8 +198,10 @@ export default function CollectionsPage() {
               {filteredCollections.map((collection) => (
                 <div key={collection.id} className="glass rounded-lg p-4 hover:bg-white/5 transition-all cursor-pointer">
                   <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                      <img
+                    <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+                      <Image
+                        fill
+                        unoptimized
                         src={collection.coverPhoto}
                         alt={collection.name}
                         className="w-full h-full object-cover"
@@ -218,7 +223,7 @@ export default function CollectionsPage() {
                       <p className="text-white/60 text-sm mb-2">{collection.description}</p>
                       <div className="flex items-center space-x-6 text-sm text-white/50">
                         <div className="flex items-center space-x-1">
-                          <Image size={14} />
+                          <ImageIcon size={14} />
                           <span>{collection.photoCount} photos</span>
                         </div>
                         <div className="flex items-center space-x-1">

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Wallet, Mail, Music, FileText, HardDrive, Calendar, Search, Table, Share2, Briefcase, Store, Wifi, Battery, Clock, TrendingUp, Building2, Shield, Video, Code2, Camera, MapPin, MessageCircle, Users, Gamepad2, BookOpen, Globe, Box, Monitor, GraduationCap, Paintbrush, UserCheck, Maximize2, Home, Sparkles } from 'lucide-react';
+import Image from 'next/image';
+import { useMounted } from '@/lib/clientStore';
+import { Wallet, Mail, Music, FileText, HardDrive, Calendar, Search, Table, Briefcase, Store, Wifi, Battery, Clock, TrendingUp, Building2, Shield, Video, Code2, Camera, MapPin, MessageCircle, Users, Gamepad2, BookOpen, Globe, Box, Monitor, GraduationCap, Paintbrush, UserCheck, Maximize2, Sparkles } from 'lucide-react';
 import './MinimalDock.css';
 
 interface DockApp {
@@ -19,13 +21,11 @@ interface MinimalDockProps {
 
 const MinimalDock: React.FC<MinimalDockProps> = ({ currentApp = 'bitcoin-photos' }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const [isHovered, setIsHovered] = useState(false);
   const [expandTimeout, setExpandTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration guard: must flip after mount
-    setMounted(true);
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
@@ -171,7 +171,7 @@ const MinimalDock: React.FC<MinimalDockProps> = ({ currentApp = 'bitcoin-photos'
                 disabled={app.disabled}
               >
                 {app.id === 'bapps-store' ? (
-                  <img src="/bapps-icon.jpg" alt="BAPPS" className="minimal-dock-icon-image" />
+                  <Image src="/bapps-icon.jpg" alt="BAPPS" width={32} height={32} className="minimal-dock-icon-image" />
                 ) : app.id === 'cashboard' ? (
                   <svg className="minimal-dock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} style={{ color: getIconColor(app.color, index) }}>
                     <circle cx="12" cy="12" r="10" />

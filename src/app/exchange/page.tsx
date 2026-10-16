@@ -5,7 +5,7 @@ import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
-import { TrendingUp, TrendingDown, Search, Filter, Coins, Image, Eye, Heart, ArrowUpDown, BarChart3 } from 'lucide-react';
+import { TrendingUp, TrendingDown, Search, Coins, Image as ImageIcon, Eye, Heart, ArrowUpDown, BarChart3 } from 'lucide-react';
 
 interface PhotoShare {
   id: string;
@@ -141,7 +141,7 @@ export default function ExchangePage() {
 
             <div className="glass rounded-lg p-4">
               <div className="flex items-center space-x-2 mb-2">
-                <Image size={20} className="text-purple-500" />
+                <ImageIcon size={20} className="text-purple-500" />
                 <span className="text-white/80 text-sm">Active Collections</span>
               </div>
               <div className="text-2xl font-bold text-white">156</div>
@@ -178,12 +178,12 @@ export default function ExchangePage() {
                 </thead>
                 <tbody>
                   {filteredShares.length === 0 && <tr><td colSpan={8} className="py-12 text-center text-white/50">No photo shares are listed yet.</td></tr>}
-                  {filteredShares.map((share, index) => (
+                  {filteredShares.map((share) => (
                     <tr key={share.id} className="border-t border-white/5 hover:bg-white/5 transition-colors">
                       <td className="p-4">
                         <div className="flex items-center space-x-3">
                           <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center">
-                            <Image size={20} className="text-white/50" />
+                            <ImageIcon size={20} className="text-white/50" />
                           </div>
                           <div>
                             <div className="font-medium text-white">{share.title}</div>

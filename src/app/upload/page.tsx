@@ -1,12 +1,13 @@
 'use client';
 
+import Image from 'next/image';
 import React, { useState, useCallback } from 'react';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
 import DevSidebar from '@/components/DevSidebar';
 import MinimalDock from '@/components/MinimalDock';
 import { useWallet, inscribeFile } from '@/lib/bwallet';
-import { Upload, Image, FileText, Zap, Camera, Lock, Coins, TrendingUp, Share2 } from 'lucide-react';
+import { Upload, Zap } from 'lucide-react';
 
 export default function UploadPage() {
   const [dragActive, setDragActive] = useState(false);
@@ -144,8 +145,10 @@ export default function UploadPage() {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {uploadedFiles.map((file, index) => (
                       <div key={index} className="relative group">
-                        <div className="aspect-square bg-gray-800 rounded-lg overflow-hidden">
-                          <img
+                        <div className="relative aspect-square bg-gray-800 rounded-lg overflow-hidden">
+                          <Image
+                            fill
+                            unoptimized
                             src={URL.createObjectURL(file)}
                             alt={file.name}
                             className="w-full h-full object-cover"

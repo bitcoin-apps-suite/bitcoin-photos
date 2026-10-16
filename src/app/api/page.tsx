@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import ProofOfConceptBar from '@/components/ProofOfConceptBar';
 import CleanTaskbar from '@/components/CleanTaskbar';
@@ -29,14 +29,14 @@ interface SystemStatus {
 }
 
 export default function APIPage() {
-  const [systemStatus, setSystemStatus] = useState<SystemStatus>({
+  const [systemStatus] = useState<SystemStatus>({
     overall: 'operational',
     uptime: 99.98,
     version: '1.2.3',
     lastUpdate: '2025-01-15T10:30:00Z'
   });
 
-  const [endpoints, setEndpoints] = useState<APIEndpoint[]>([
+  const [endpoints] = useState<APIEndpoint[]>([
     // Authentication
     { method: 'POST', path: '/api/auth/login', description: 'Authenticate user with wallet signature', status: 'operational', responseTime: 125, category: 'Authentication' },
     { method: 'POST', path: '/api/auth/logout', description: 'Invalidate user session', status: 'operational', responseTime: 89, category: 'Authentication' },
