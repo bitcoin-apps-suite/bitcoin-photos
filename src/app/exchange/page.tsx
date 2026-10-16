@@ -106,7 +106,7 @@ export default function ExchangePage() {
 
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                 className="bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary-500"
               >
                 <option value="volume" className="bg-gray-900">Sort by Volume</option>

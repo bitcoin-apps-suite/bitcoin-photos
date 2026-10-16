@@ -156,7 +156,7 @@ export default function NFTGalleryPage() {
               {/* Filter */}
               <select
                 value={filter}
-                onChange={(e) => setFilter(e.target.value as any)}
+                onChange={(e) => setFilter(e.target.value as typeof filter)}
                 className="bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary-500"
               >
                 <option value="all" className="bg-gray-900">All NFTs</option>
@@ -167,7 +167,7 @@ export default function NFTGalleryPage() {
               {/* Sort */}
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
                 className="bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary-500"
               >
                 <option value="recent" className="bg-gray-900">Recently Minted</option>

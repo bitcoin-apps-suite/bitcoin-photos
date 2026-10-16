@@ -31,13 +31,13 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({ className = '' }) => {
     {
       label: 'Bitcoin Photos',
       items: [
-        { label: 'Home', action: () => window.location.href = '/' },
+        { label: 'Home', action: () => window.location.assign('/') },
         { divider: true },
         { label: 'About Bitcoin Photos', action: () => alert('Bitcoin Photos\n\nAuto-NFT your photos, encrypt them, and trade image shares on Bitcoin.\n\n© 2025 The Bitcoin Corporation LTD') },
-        { label: 'Features', action: () => window.location.href = '/landing' },
+        { label: 'Features', action: () => window.location.assign('/landing') },
         { divider: true },
-        { label: 'Trading Exchange', action: () => window.location.href = '/exchange' },
-        { label: '$bPhotos Token', action: () => window.location.href = '/token' },
+        { label: 'Trading Exchange', action: () => window.location.assign('/exchange') },
+        { label: '$bPhotos Token', action: () => window.location.assign('/token') },
         { divider: true },
         { label: 'Preferences...', shortcut: '⌘,', action: () => console.log('Preferences') },
         { divider: true },
@@ -90,7 +90,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({ className = '' }) => {
     {
       label: 'Trading',
       items: [
-        { label: 'View Exchange', action: () => window.location.href = '/exchange' },
+        { label: 'View Exchange', action: () => window.location.assign('/exchange') },
         { label: 'My Portfolio', action: () => console.log('Portfolio') },
         { divider: true },
         { label: 'Auto-NFT Photos', action: () => console.log('Auto-NFT') },
@@ -124,7 +124,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({ className = '' }) => {
       label: 'Help',
       items: [
         { label: 'Bitcoin Photos Help', shortcut: '⌘?', action: () => alert('Bitcoin Photos\n\nAuto-NFT your photos and trade image shares on Bitcoin') },
-        { label: 'Getting Started', action: () => window.location.href = '/landing' },
+        { label: 'Getting Started', action: () => window.location.assign('/landing') },
         { divider: true },
         { label: 'GitHub Repository', href: 'https://github.com/bitcoin-apps-suite/bitcoin-photos' },
         { label: 'Report an Issue', href: 'https://github.com/bitcoin-apps-suite/bitcoin-photos/issues' },
@@ -181,7 +181,7 @@ const CleanTaskbar: React.FC<TaskbarProps> = ({ className = '' }) => {
           <div className="absolute top-8 left-0 min-w-[280px] bg-zinc-900/95 backdrop-blur-md border border-white/15 rounded-lg shadow-2xl py-2 z-[1000]">
             <button
               onClick={() => {
-                window.location.href = 'https://www.bitcoinapps.store/';
+                window.location.assign('https://www.bitcoinapps.store/');
                 setShowBitcoinSuite(false);
               }}
               className="w-full px-4 py-2 text-xs text-primary-500 bg-transparent border-none border-b border-white/10 mb-1 cursor-pointer text-left font-semibold transition-colors hover:bg-primary-500/10"

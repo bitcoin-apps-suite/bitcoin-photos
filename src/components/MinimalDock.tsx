@@ -5,7 +5,7 @@ import './MinimalDock.css';
 interface DockApp {
   id?: string;
   name: string;
-  icon: any;
+  icon: React.ElementType | 'custom';
   color: string;
   url?: string;
   disabled?: boolean;
@@ -24,6 +24,7 @@ const MinimalDock: React.FC<MinimalDockProps> = ({ currentApp = 'bitcoin-photos'
   const [expandTimeout, setExpandTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration guard: must flip after mount
     setMounted(true);
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -120,7 +121,7 @@ const MinimalDock: React.FC<MinimalDockProps> = ({ currentApp = 'bitcoin-photos'
 
   const handleAppClick = (app: DockApp) => {
     if (!app.disabled && app.url && !app.current) {
-      window.location.href = app.url;
+      window.location.assign(app.url);
     }
   };
 
@@ -160,7 +161,7 @@ const MinimalDock: React.FC<MinimalDockProps> = ({ currentApp = 'bitcoin-photos'
         {/* All apps on the left */}
         <div className="minimal-dock-apps">
           {dockApps.map((app, index) => {
-            const Icon = app.icon;
+            const Icon = app.icon === 'custom' ? null : app.icon;
             return (
               <button
                 key={app.name}
@@ -184,7 +185,7 @@ const MinimalDock: React.FC<MinimalDockProps> = ({ currentApp = 'bitcoin-photos'
                     <path d="M3 9h18" />
                   </svg>
                 ) : (
-                  <Icon className="minimal-dock-icon" style={{ color: getIconColor(app.color, index) }} />
+                  Icon && <Icon className="minimal-dock-icon" style={{ color: getIconColor(app.color, index) }} />
                 )}
                 {app.current && <span className="minimal-dock-indicator" />}
               </button>
@@ -206,7 +207,7 @@ const MinimalDock: React.FC<MinimalDockProps> = ({ currentApp = 'bitcoin-photos'
         {/* Special mini icons on the right */}
         <div className="minimal-dock-right-apps">
           {rightSideApps.map((app, index) => {
-            const Icon = app.icon;
+            const Icon = app.icon === 'custom' ? null : app.icon;
             return (
               <button
                 key={app.name}
@@ -227,7 +228,7 @@ const MinimalDock: React.FC<MinimalDockProps> = ({ currentApp = 'bitcoin-photos'
                     <path d="M3 9h18" />
                   </svg>
                 ) : (
-                  <Icon className="minimal-dock-icon-mini" style={{ color: getIconColor(app.color, index) }} />
+                  Icon && <Icon className="minimal-dock-icon-mini" style={{ color: getIconColor(app.color, index) }} />
                 )}
               </button>
             );
